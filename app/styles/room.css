@@ -22,3 +22,32 @@
 .rooms a {
   text-decoration: none;
 }
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 50%;}
+
+.rooms header {
+
+}
+
+.rooms header h1 {
+  margin: 1%;
+}
+
+.rooms header button {
+  margin-top: 5%;
+  margin-right: 10%;
+  vertical-align: middle;
+  float: right;
+  width: auto;
+}

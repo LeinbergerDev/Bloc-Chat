@@ -5,10 +5,13 @@
   <div class="modal-body" id="modal-body">
     <label for="roomName" >Enter a room name</label>
   </br>
-    <input type="text" name="roomName" value="{{ $ctrl.RoomName }}"></input>
+    <input type="text" name="roomName" autofocus
+      placeholder="Enter Room Name"
+      ng-model="$instanceCtrl.roomName"
+      ng-model-options="{ gettersetter: true }">
   </div>
   <div class="modal-footer">
-    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
-    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="$instanceCtrl.cancel()">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="$instanceCtrl.ok()">OK</button>
   </div>
 </div>

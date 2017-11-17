@@ -1,100 +1,86 @@
+/**
+* @function modalRoomCtrl
+* @desc Controller used to open a modal window to allow a user to create a new chat room.
+* @param {object} $uibModal
+* @param {object} $log`
+* @param {object} $document
+*/
 angular.module('blocChat').controller('modalRoomCtrl', function ($uibModal, $log, $document) {
+  /**
+  * @desc scope object for the controller
+  * @type {object}
+  */
   var $ctrl = this;
-  $ctrl.RoomName = "test";
+
   $ctrl.animationsEnabled = true;
-  $ctrl.open = function (size, parentSelector) {
-    var parentElem = parentSelector ? angular.element($document[0].querySelector('.modal-rooms' + parentSelector)) : undefined;
+
+  /**
+  * @desc Room object to house collection of Rooms from firebaseArray
+  * @type {object}
+  */
+  $ctrl.room = {};
+
+  /**
+  * @function open
+  * @desc Sets the properties for a modal dialog then displays it on the screen.
+  * @param {object} room
+  */
+  $ctrl.open = function (room) {
+    $ctrl.room = room;
     var modalInstance = $uibModal.open({
       animation: $ctrl.animationsEnabled,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
       templateUrl: '/templates/modal-newRoom.html',
       controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      size: size,
-      appendTo: parentElem,
-      resolve: {
-        RoomName: function() {
-          
-        }
-      }
+      controllerAs: '$instanceCtrl',
+      size: 'sm'
     });
-    modalInstance.result.then(function (){
+    modalInstance.result.then(function (name){
+      var room = {$value: name};
+      $ctrl.room.add(room);
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
   }
 });
 
+/**
+* @function ModalInstanceCtrl
+* @desc Controller used for objects within the open modal window.
+* @param {object} $uibModalInstance
+*/
 angular.module('blocChat').controller('ModalInstanceCtrl', function ($uibModalInstance) {
+  /**
+  * @desc scope object for the controller
+  * @type {object}
+  */
   var $ctrl = this;
+
+  /**
+  * @desc variable to store the name for a new chat room.
+  * @type {object}
+  */
+  $ctrl.roomName = "";
+
+  /**
+  * @function ok
+  * @desc function called with the ok button is clicked.  It tests for a room name and passes it along to the close
+  * function if it exists else it alerts the user to either enter a name or click the cancel button.
+  */
   $ctrl.ok = function () {
-    $uibModalInstance.close();
+    if ($ctrl.roomName !== "") {
+      $uibModalInstance.close($ctrl.roomName);
+    } else {
+      alert("You must enter a room name, or click cancel if you do not wish to create a room.");
+    }
   };
+
+  /**
+  * @function cancel
+  * @desc function called when the cancel button is clicked.  It dimesses the modal window witout creating a new room.
+  */
   $ctrl.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
 });
-
-
-/*
-angular.module('blocChat').controller('modalRoomCtrl', function($uibModal) {
-
-  var $ctrl = this;
-
-  $ctrl.RoomName = "test";
-
-  $ctrl.animationsEnabled = true;
-
-  $ctrl.open = function() {
-    var modalInstance = $uibModal.open({
-      templateUrl: '/templates/modal-newRoom.html',
-      controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      size: 'sm'
-    });
-
-    modalInstance.result.then(fuction (selectedItem) {
-      $ctrl.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-
-  };
-
-});
-angular.module('blocChat').controller('ModalInstanceCtrl', function($uibModalInstance){
-
-  var $ctrl = this;
-
-  $ctrl.ok = function () {
-    alert("Button Clicked");
-    $uibModalInstance.close();
-  };
-
-  $ctrl.cancel = function () {
-    $uibModalInstance.dimiss('cancel');
-  };
-
-});
-
-angular.module('blocChat').component('modalComponent', {
-  templateUrl: '/templates/modal-newRoom.html',
-  bindings: {
-    resolve: '<',
-    close: '&',
-    dismiss: '&'
-  },
-  controller: function () {
-    var $ctrl = this;
-
-    $ctrl.ok = function () {
-      $ctrl.close();
-    };
-
-    $ctrl.cancel = function () {
-      $ctrl.dismiss();
-    };
-  }
-});
-*/
