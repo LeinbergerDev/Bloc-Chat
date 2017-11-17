@@ -10,3 +10,7 @@ h1 {
   font-weight: 500;
   margin-top: 10%;
 }
+
+.modal-rooms input {
+  width: 100%;
+}

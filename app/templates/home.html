@@ -1,6 +1,9 @@
-<div class="rooms">
-  <h1>{{ home.title }}</h1>
-  <ul ng-repeat="room in home.rooms track by $index">
-    <a href="#"><li>{{ room.$value }}</li></a>
-  </ul>
-</div>
+  <div ng-controller="HomeCtrl as home" class="rooms">
+    <h1>{{ home.title }}</h1>
+    <ul ng-repeat="room in home.rooms track by $index">
+      <a href="#"><li>{{ room.$value }}</li></a>
+    </ul>
+  </div>
+  <div ng-controller="modalRoomCtrl as $ctrl" class="modal-room">
+    <button ng-click="$ctrl.open('sm')">click me</button>
+  </div>
