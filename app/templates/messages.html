@@ -1,0 +1,17 @@
+<div class="messages" ng-controller="Message as messages">
+<!-- room name header -->
+<h1></h1>
+<!-- use ng-repeat to populate the messages content -->
+<ul ng-repeat="message in messages.roomMessages">
+  <li>
+    <!-- user name -->
+    <h2>{{message.userName}}</h2>
+    <!-- message content -->
+    <p>{{message.content}}</p>
+    <!-- Created for testing.  Set ng-hide to true or remove from final product -->
+    <P ng-hide="false">{{message.sentAt}}</p>
+      <!-- Created for testing.  Set ng-hide to true or remove from final product -->
+    <p ng-hide="false">{{message.roomId}}</p>
+  </li>
+</ul>
+</div>

@@ -1,53 +1,24 @@
-.rooms {
-  float:left;
-  width: 25%;
-  background-color: lightgray;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+
+.room-header {
+  border: 1px solid red;
 }
 
-.rooms li {
-  list-style-type: none;
-  margin-left: 2px;
-  padding: 0;
-  margin: 4%;
+.room-header h1 {
+  width: 100%;
+  display: inline-block;
 }
 
-.rooms ul {
-  margin: 0;
-  padding: 0;
-}
-
-.rooms a {
-  text-decoration: none;
-}
-
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-[class*="col-"] {
-  float: left;
-  padding: 15px;
-}
-
-.col-1 {width: 50%;}
-
-.rooms header {
-
-}
-
-.rooms header h1 {
-  margin: 1%;
-}
-
-.rooms header button {
-  margin-top: 5%;
-  margin-right: 10%;
-  vertical-align: middle;
+.room-header h1 button {
   float: right;
-  width: auto;
+}
+
+.room-item {
+  list-style: none;
+  padding: 1%;
+  font-size: 1.5em;
+}
+
+.room-item a {
+  text-decoration: none;
+  color: black;
 }

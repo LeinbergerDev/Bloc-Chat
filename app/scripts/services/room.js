@@ -39,6 +39,7 @@
       rooms.$add(room);
     };
 
+
     /**
     * @desc returning the room object
     * @type {object} Room

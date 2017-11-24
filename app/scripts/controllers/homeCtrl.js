@@ -4,7 +4,7 @@
 * @param {object} room
 */
 (function() {
-  function HomeCtrl(Room) {
+  function HomeCtrl(Room, Message) {
     /**
     * @desc property to hold the title of the application
     * @type {object} title
@@ -30,9 +30,18 @@
     */
     this.Room = Room;
 
+    this.selectedRoom = null;
+
+    this.messages = {};
+
+    this.setMessages = function (room) {
+      this.selectedRoom = room;
+      var m = Message.getByRoomId(room.$id);
+      this.messages = m;
+    };
   }
 
   angular
     .module('blocChat')
-    .controller('HomeCtrl', [ 'Room', HomeCtrl]);
+    .controller('HomeCtrl', [ 'Room', 'Message', HomeCtrl]);
 })();
