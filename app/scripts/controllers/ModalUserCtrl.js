@@ -7,7 +7,11 @@
     */
     var $ctrl = this;
 
-    $ctrl.username = "Test";
+    /**
+     * @desc variable used to create a username in the cookie
+     * @type {object} 
+     */
+    $ctrl.username = "";
 
     /**
     * @function ok
