@@ -1,0 +1,26 @@
+.modal-user {
+  background: lightgray;
+  padding: 0;
+}
+
+.modal-user h3 {
+  margin-left: 10%;
+}
+
+.modal-user p {
+  margin-left: 10%;
+}
+
+.modal-user input {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 4%;
+  width: 80%;
+}
+
+.modal-user button {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 4%;
+  width: 80%;
+}
