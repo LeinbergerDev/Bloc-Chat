@@ -49,7 +49,7 @@
         content: this.messageContent,
         roomId: this.selectedRoom.$id,
         sentAt: new Date().toString(),
-        username: document.title
+        username: ""
       };
       Message.sendMessage(newMessage);
     };

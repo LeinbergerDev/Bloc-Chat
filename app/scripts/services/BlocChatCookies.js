@@ -5,9 +5,6 @@
      * @type {object}
      */
     var currentUser = $cookies.get('blocChatCurrentUser');
-    document.title = currentUser;
-    var title = document.title;
-    console.log(title);
     console.log("Current User: " + currentUser);
     if (!currentUser || currentUser === '') {
       /**
@@ -29,7 +26,6 @@
        */
       modalInstance.result.then(function (name){
         $cookies.put('blocChatCurrentUser', name);
-        document.title = name;
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
