@@ -4,6 +4,8 @@
 
     var ref = firebase.database().ref().child("messages");
 
+    var Messages = $firebaseArray(ref);
+
     Message.getByRoomId = function(roomId){
       var roomMessages = {};
 
@@ -13,7 +15,11 @@
 
       return roomMessages;
     };
-    
+
+    Message.sendMessage = function(newMessage) {
+      Messages.$add(newMessage);
+    }
+
     return Message;
   }
   angular

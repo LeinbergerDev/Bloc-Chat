@@ -38,10 +38,24 @@
       this.selectedRoom = room;
       var m = Message.getByRoomId(room.$id);
       this.messages = m;
+      console.log(this.selectedRoom);
+    };
+
+    this.messageContent = "test 1";
+
+    this.sendMessage = function() {
+
+      var newMessage = {
+        content: this.messageContent,
+        roomId: this.selectedRoom.$id,
+        sentAt: new Date().toString(),
+        username: document.title
+      };
+      Message.sendMessage(newMessage);
     };
   }
 
   angular
     .module('blocChat')
-    .controller('HomeCtrl', [ 'Room', 'Message', HomeCtrl]);
+    .controller('HomeCtrl', ['Room', 'Message', HomeCtrl]);
 })();

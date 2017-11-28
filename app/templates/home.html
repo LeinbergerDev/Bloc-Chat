@@ -12,12 +12,12 @@
           <li class="room-item"><a href="#" ng-click="home.setMessages(room)">{{ room.$value }}</a></li>
         </ul>
       </div>
-    <div class="col-md-9 messages">
+    <div class="col-md-9 messages border">
       <!-- room name header -->
       <h2>{{ home.selectedRoom.$value }}</h2>
       <!-- use ng-repeat to populate the messages content -->
 
-      <ul ng-repeat="message in home.messages" class="message-list">
+      <ul ng-repeat="message in home.messages" class="message-list border">
         <li class="message">
           <span class="message">
           <!-- user name -->
@@ -31,6 +31,15 @@
         </span>
         </li>
       </ul>
+
+      <div class="newMessage container-fluid clearfix border">
+        <div class="row">
+          <span class="col-md-9 offset-md-3">
+            <textarea class="message-textbox" ng-model="home.messageContent"></textarea>
+            <button class="send-btn" ng-click="home.sendMessage()">Send</button>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
